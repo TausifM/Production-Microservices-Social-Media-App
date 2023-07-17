@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/**/*.ts",
     "prettier": "prettier --check ./src/**/*.ts",
-    "prettier:fix": "",
+    "prettier:fix": "prettier --write./src/**/*.ts",
     "start:dev": "nodemon src/index.ts",
     "start": "",
     "test": "echo \"Error: no test specified\" && exit 1"
