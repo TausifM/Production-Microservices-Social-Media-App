@@ -1,9 +1,9 @@
 module.exports = {
   env: {
     es6: true,
-    browser: true,
+    browser: true
   },
-  extends: "airbnb-typescript-prettier",
+  extends: "airbnb-typescript-prettier"
   // // "globals": {
   // //   "Atomics": "readonly",
   // //   "SharedArrayBuffer": "readonly"

@@ -1,10 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import express from "express";
+import { json } from "body-parser";
+import { signupRouter } from "./routes";
 
 const app = express();
 
-app.get("*", (req, res) => {
-  res.send({});
-});
+app.use(json());
+app.use(signupRouter);
 
-// eslint-disable-next-line import/prefer-default-export
-export { app };
+export default app;
