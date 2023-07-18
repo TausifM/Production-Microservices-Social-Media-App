@@ -4,7 +4,7 @@
   "description": "Authentication Microservices for social media app",
   "main": "index.ts",
   "scripts": {
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/**/*.ts --quiet --fix",
     "prettier": "prettier --check ./src/**/*.ts",
     "prettier:fix": "prettier --write ./src/**/*.ts",
     "start:dev": "nodemon src/index.ts",
