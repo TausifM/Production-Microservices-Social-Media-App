@@ -42,7 +42,7 @@
     "ts-jest": "^29.1.1"
   },
   "lint-staged": {
-    "src/**/*.ts": [
+    "*.ts": [
       "npm run prettier",
       "npm run lint",
       "git add"
