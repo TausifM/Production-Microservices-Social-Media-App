@@ -44,8 +44,9 @@
   "lint-staged": {
     "*.ts": [
       "npm run prettier",
+      "eslint --quiet --fix",
       "npm run lint",
-      "git add"
+      "git add ."
     ]
   },
   "husky": {
