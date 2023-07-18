@@ -9,7 +9,8 @@
     "prettier:fix": "prettier --write ./src/**/*.ts",
     "start:dev": "nodemon src/index.ts",
     "start": "",
-    "test": "jest --watchAll --no-cache --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "test:watch": "jest --watchAll --no-cache --detectOpenHandles"
   },
   "jest": {
     "testEnvironment": "node",
@@ -42,11 +43,11 @@
     "ts-jest": "^29.1.1"
   },
   "lint-staged": {
-    "*.ts": [
-      "npm run prettier",
-      "eslint --quiet --fix",
+    "src/**/*.ts": [
+      "npm run prettier:fix",
       "npm run lint",
-      "git add ."
+      "npm run test",
+      "git add"
     ]
   },
   "husky": {
