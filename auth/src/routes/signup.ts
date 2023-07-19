@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 

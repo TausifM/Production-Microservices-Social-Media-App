@@ -1,22 +1,26 @@
 module.exports = {
-  env: {
-    es6: true,
-    browser: true
+  extends: [
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+  ],
+  plugins: ["import", "prettier", "@typescript-eslint"],
+  parserOptions: {
+    project: "./tsconfig.json",
+    // tsconfigRootDir: __dirname,
+    sourceType: "module"
   },
-  extends: "airbnb-typescript-prettier"
-  // // "globals": {
-  // //   "Atomics": "readonly",
-  // //   "SharedArrayBuffer": "readonly"
-  // // },
-  // // parserOptions: {
-  // //   "ecmaVersion": 2018
-  // // },
-  // // plugins: ['prettier'],
-  // rules: {
-  //   'brace-style': ['error', 'stroustrup'],
-  //   // 'comma-dangle': ['error', 'never'],
-  //   'linebreak-style': 0,
-  //   // "quotes": [2, "double"],
-  //   'no-unused-vars': 'warn',
-  // },
+  rules: {
+    // quotes: [
+    //   'error',
+    //   'single',
+    //   { avoidEscape: true, allowTemplateLiterals: true },
+    // ],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "no-underscore-dangle": ["error", { allow: ["_id", "_update"] }],
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
+  }
 };
