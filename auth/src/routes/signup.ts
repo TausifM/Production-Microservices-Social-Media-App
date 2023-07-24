@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import { SIGNUP_ROUTE } from "./route-defs";
 import { User } from "../models";
+import { InvalidInput } from "../errors/invalid-input";
 
 const signupRouter = express.Router();
 
@@ -24,7 +25,7 @@ signupRouter.post(
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).send({}); // return so it will not execute further code
+      throw new InvalidInput();
     }
     if (/.+@[A-Z]/g.test(req.body.email)) {
       return res.status(422).send({});

@@ -11,11 +11,11 @@ it("should not save a new user if the email is already in the database", async (
   let err;
   try {
     await User.create(userInfo);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     err = error;
   }
 
   expect(err).toBeDefined();
-  expect(err.message).toEqual('email is already in the DB')
+  expect(err.message).toEqual("email is already in the DB");
 });
