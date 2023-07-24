@@ -45,10 +45,13 @@ signupRouter.post(
       // });
     }
     const { email, password } = req.body;
-    const existingUser = await User.findOne({ email });
-    if(existingUser) {return res.sendStatus(422);}
-    const newUser = await User.create({ email, password });
-    res.status(201).send({ email: newUser.email });
+    try {
+      const newUser = await User.create({ email, password });
+      // console.log(newUser, "newUser"); //three users are created after each save
+      return res.status(201).send({ email: newUser.email });
+    } catch (error) {
+      return res.sendStatus(422);
+    }
   }
 );
 

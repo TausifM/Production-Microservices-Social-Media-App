@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 // let mongoMemoryServer : MongoMemoryServer;
 
 // eslint-disable-next-line prefer-const
-let mongoMemoryServer = MongoMemoryServer.create();
+const mongoMemoryServer = MongoMemoryServer.create();
 
 beforeAll(async () => {
   const asyncDB = await mongoMemoryServer;
@@ -19,12 +19,12 @@ beforeAll(async () => {
 // 1. clean up the dnb
 beforeEach(async () => {
   try {
-    const userCollection = mongoose.connection.db.collection("User");
-    // Delete all documents from the "user" collection
-    return await userCollection.deleteMany({});
+    const allCollections = await mongoose.connection.db.collections();
+    allCollections.forEach(async (collection) => {
+      await collection.deleteMany({});
+    });
     // Get all the collection names in the database
     // const collectionNames = await mongoose.connection.db.listCollections().toArray();
-    // console.log(collectionNames, "collectionName")
     // // Iterate through each collection and delete all documents
     // for (const collectionName of collectionNames) {
     //   const collection = mongoose.connection.model(collectionName.name);
