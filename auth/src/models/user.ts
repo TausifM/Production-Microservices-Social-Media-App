@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-// interface vs type ---> intergace normally defined to class and type for props declaration.
+// interface vs type ---> interface normally defined to class and type for props declaration.
 type UserDocument = {
   _id: string;
   email: string;

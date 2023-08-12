@@ -2,16 +2,19 @@ import { ValidationError } from "express-validator";
 import BaseCustomError from "./base-custom-error";
 import { SerializedErrorField, SerializedErrorOutput } from "./types/serialized-error-output";
 
-export default class InvalidInput extends BaseCustomError {
+export type InvalidInputConstructorErrorsParam = ValidationError[];
+
+export default class InValidInput extends BaseCustomError {
   private readonly errors: ValidationError[] | undefined;
 
   private statusCode = 422;
 
   private defaultErrorMessage = "The input provided is invalid";
 
-  constructor(message?: string) {
-    super(message);
-    Object.setPrototypeOf(this, InvalidInput.prototype);
+  constructor(errors?: InvalidInputConstructorErrorsParam) {
+    super("The input provided is invalid");
+    this.errors = errors;
+    Object.setPrototypeOf(this, InValidInput.prototype);
   }
 
   getStatusCode(): number {
@@ -27,10 +30,11 @@ export default class InvalidInput extends BaseCustomError {
 
     if (this.errors && this.errors.length > 0) {
       this.errors.forEach((error) => {
-        if (parsedErrors[error.param]) {
-          parsedErrors[error.param].push(error.msg);
+        if (parsedErrors[error.msg]) {
+          console.log(error, "errrr");
+          parsedErrors[error.msg].push(error.msg);
         } else {
-          parsedErrors[error.param] = [error.msg];
+          parsedErrors[error.msg] = [error.msg];
         }
       });
     }

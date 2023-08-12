@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import { BaseCustomError } from "../errors";
 
-const errorHandler = (err: Error, res: Response, _next: NextFunction) => {
+const errorHandler = (err: Error, res: Response, _next: NextFunction): Response => {
   if (err instanceof BaseCustomError) {
     return res.sendStatus(400);
   }
