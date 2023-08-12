@@ -39,6 +39,7 @@ module.exports = {
     // ],
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-empty-interface": "off",
+    "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
     "no-underscore-dangle": ["error", { allow: ["_id", "_update"] }],
     "class-methods-use-this": "off",
